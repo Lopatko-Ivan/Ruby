@@ -20,7 +20,7 @@ class BinSet
       if @size==0
 	@array[0]=val
       else
-        @array[search_ind(0,@size-1,val),0] = val
+        @array[search_ind(0,@size-1,val)] = val
       end
       @size += 1
     end
