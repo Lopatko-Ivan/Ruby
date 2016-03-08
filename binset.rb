@@ -20,7 +20,9 @@ class BinSet
       if @size==0
 	@array[0]=val
       else
-        @array[search_ind(0,@size-1,val)] = val
+        i=search_ind(0,@size-1,val)
+        forward(i)
+        @array[i]=val
       end
       @size += 1
     end
@@ -28,8 +30,7 @@ class BinSet
 
   def delete(val)
     unless (i = search(0,@size-1,val)).nil?
-      @array[i,1] = nil
-      @array.compact!
+      backward(i)
       @size-=1
     end
   end
@@ -66,4 +67,16 @@ class BinSet
         search_ind(mid,right,val)
     end
   end
+
+  def forward(i)
+    (@size).downto(i+1) do |x|
+      @array[x]=@array[x-1]
+    end
+  end  
+
+  def backward(i)
+    i.upto(@size-2) do |x|
+      @array[x]=@array[x+1]
+    end
+  end 
 end
