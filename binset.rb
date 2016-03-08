@@ -49,7 +49,6 @@ class BinSet
   end
 
   def search_ind(left,right,val)
-    return 0 if right==-1
     if right-left < 2
       if val > @array[right]
         return right+1
@@ -62,9 +61,9 @@ class BinSet
     mid=(right+left)/2
     case val <=> @array[mid]
       when -1
-        search(left,mid,val)
+        search_ind(left,mid,val)
       when 1
-        search(mid,right,val)
+        search_ind(mid,right,val)
     end
   end
 end
