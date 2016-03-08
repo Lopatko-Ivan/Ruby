@@ -11,11 +11,11 @@ class BinSet
   def empty?; @size == 0 end
  
   def include?(val)
-    !search(val).nil?
+    !search(0,@size-1,val).nil?
   end
 
   def insert(val)
-    if search(val).nil?
+    if search(0,@size-1,val).nil?
       raise 'LSet is full' if @size >= @array.size
       @array[search_ind(0,@size-1,val),0] = val
       @size += 1
