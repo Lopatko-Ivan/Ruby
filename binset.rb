@@ -17,7 +17,11 @@ class BinSet
   def insert(val)
     if search(0,@size-1,val).nil?
       raise 'LSet is full' if @size >= @array.size
-      @array[search_ind(0,@size-1,val),0] = val
+      if @size==0
+	@array[0]=val
+      else
+        @array[search_ind(0,@size-1,val),0] = val
+      end
       @size += 1
     end
   end
@@ -35,7 +39,7 @@ class BinSet
   def search(left,right,val)
     return nil if right < left
     mid=(right+left)/2
-    case var<=>@array[mid]
+    case val<=>@array[mid]
       when -1
         search(left,mid-1,val)
       when 1
@@ -56,7 +60,7 @@ class BinSet
       end
     end
     mid=(right+left)/2
-    case var <=> @array[mid]
+    case val <=> @array[mid]
       when -1
         search(left,mid,val)
       when 1
