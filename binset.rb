@@ -1,4 +1,4 @@
-class LSet
+class BinSet
   DEF_SIZE = 7
 
   def initialize(size = DEF_SIZE)
