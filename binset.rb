@@ -48,7 +48,7 @@ class BinSet
     end
   end
 
-  def search_ind(right,left,val)
+  def search_ind(left,right,val)
     return 0 if right==-1
     if right-left < 2
       if val > @array[right]
