@@ -16,7 +16,7 @@ class BinSet
 
   def insert(val)
     if search(0,@size-1,val).nil?
-      raise 'LSet is full' if @size >= @array.size
+      raise 'BinSet is full' if @size >= @array.size
       if @size==0
 	@array[0]=val
       else
