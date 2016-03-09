@@ -1,19 +1,24 @@
 k=0
-i=0
+last=-1.0/0
+r=false
 begin
 	while true
 		print "x->"
-		x=readline.to_i
-		if i==0
-			k,last,r,i = 1,x,true,1 
-		elsif (r)and(x>last)
-			k,last,r = k,x,true
-		elsif (r)and(x==last) 
-			k,last,r = k+1,x,true 
-		elsif x<last
-			k,last,r = k,x,false
-		elsif (!r)and(x>=last)
-			k,last,r = k+1,x,true 
+		x=readline.to_i 
+		if r
+			if x>last
+				last = x
+			elsif x==last
+				k,last = k+1,x
+			else
+				last,r=x,false
+			end
+		else
+			if x<last
+				last = x
+			else
+				k,last,r = k+1,x,true
+			end
 		end
 	end
 rescue EOFError
