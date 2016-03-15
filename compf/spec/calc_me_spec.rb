@@ -93,63 +93,66 @@ describe 'Калькулятор' do
     it '8/2/2/2=1' do
       expect(calc.compile('VIII/II/II/II')).to eq 1
     end
+
+    it '(4/2)/(10/5)=1' do
+      expect(calc.compile('(IV/II)/(X/V)')).to eq 1
+    end
+
+    it '39/2=19' do
+      expect(calc.compile('XXXIX/II')).to eq 19
+    end
   end
-=begin
+
   context 'скобки и приоритеты' do
     it '(1-2)=-1' do
-      expect(calc.compile('(1-2)')).to eq -1
+      expect(calc.compile('(I-II)')).to eq -1
     end
 
     it '((((1-2))))=-1' do
-      expect(calc.compile('((((1-2))))')).to eq -1
+      expect(calc.compile('((((I-II))))')).to eq -1
     end
 
     it '(1+4)*7=35' do
-      expect(calc.compile('(1+4)*7')).to eq 35
+      expect(calc.compile('(I+IV)*VII')).to eq 35
     end
 
     it '1+(4*7)=29' do
-      expect(calc.compile('1+(4*7)')).to eq 29
+      expect(calc.compile('I+(IV*VII)')).to eq 29
     end
 
     it '7*(8)/4=14' do
-      expect(calc.compile('7*(8)/4')).to eq 14
+      expect(calc.compile('VII*(VIII)/IV')).to eq 14
     end
 
     it '4/8*7=0' do
-      expect(calc.compile('4/8*7')).to eq 0
+      expect(calc.compile('IV/VIII*VII')).to eq 0
     end
 
     it '5/3*2=2' do
-      expect(calc.compile('5/3*2')).to eq 2
+      expect(calc.compile('V/III*II')).to eq 2
     end
 
     it '5/(3*2)=0' do
-      expect(calc.compile('5/(3*2)')).to eq 0
+      expect(calc.compile('V/(III*II)')).to eq 0
     end
   end
 
   context 'выражения' do
     it '1+2+(2*(3+7))/(5+8/3)=5' do
-      test = '1+2+(2*(3+7))/(5+8/3)'
-      expect(calc.compile(test)).to eq eval(test)
-    end
-
-    it '1+2+(2*(3+7))/(5+8/3)=1' do
-      test = '1+2+(2*(3+7))/(5+8/3)'
-      expect(calc.compile(test)).to eq eval(test)
+      test = 'I+II+(II*(III+VII))/(V+VIII/III)'
+      expect(calc.compile(test)).to eq 5
     end
 
     it '(3-5-2*6/(1+1))/(2*5-1+4*(5*2/3))+(7+4+7/9)/(1+6/3)=2' do
-      test = '(3-5-2*6/(1+1))/(2*5-1+4*(5*2/3))+(7+4+7/9)/(1+6/3)'
-      expect(calc.compile(test)).to eq eval(test)
+      test = '(III-V-II*VI/(I+I))/(II*V-I+IV*(V*II/III))+(VII+IV+VII/IX)/(I+VI/III)'
+      expect(calc.compile(test)).to eq 2
     end
 
     it '((1+(1*(1+(1+1/1)))))/(1+1) = 2' do
-      test = '((1+(1*(1+(1+1/1)))))/(1+1)'
-      expect(calc.compile(test)).to eq eval(test)
+      test = '((I+(I*(I+(I+I/I)))))/(I+I)'
+      expect(calc.compile(test)).to eq 2
     end
 
   end
-=end
+
 end
