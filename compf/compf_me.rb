@@ -110,17 +110,7 @@ class Compf < Stack
 
   #поиск первого оператора
   def find_op(ar)
-    a=[]
-    n1=ar.index("*")
-    n2=ar.index("/")
-    n3=ar.index("+")
-    n4=ar.index("-")
-    a << n1
-    a << n2
-    a << n3
-    a << n4
-    a.compact!
-    a.min
+    %w(+ - * /)/map(|x| ar.index(x)).compact.min
   end
 
   # Преобразование формулы стекового компилятора в нужную
